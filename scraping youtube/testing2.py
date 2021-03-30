@@ -15,13 +15,13 @@ data=json.loads(json_text)
 with open('bruh.json','w') as out:
     json.dump(data,out)
     
-d=data["contents"]["twoColumnWatchNextResults"]["results"]["results"]["contents"][0]["videoPrimaryInfoRenderer"]
+d=data["contents"]["twoColumnWatchNextResults"]["results"]["results"]["contents"][1]["videoPrimaryInfoRenderer"] #put index 1 if there is coronavirus shit
 print(d["title"]["runs"][0]["text"])
 print(d["viewCount"]["videoViewCountRenderer"]["viewCount"]["simpleText"])
 print(d["videoActions"]["menuRenderer"]["topLevelButtons"][0]["toggleButtonRenderer"]["defaultText"]["accessibility"]["accessibilityData"]["label"])
 print(d["videoActions"]["menuRenderer"]["topLevelButtons"][1]["toggleButtonRenderer"]["defaultText"]["accessibility"]["accessibilityData"]["label"])
 
-temp=data["contents"]["twoColumnWatchNextResults"]["results"]["results"]["contents"][1]["videoSecondaryInfoRenderer"]["description"]["runs"]
+temp=data["contents"]["twoColumnWatchNextResults"]["results"]["results"]["contents"][2]["videoSecondaryInfoRenderer"]["description"]["runs"] #corona moment
 
 desc=""
 
@@ -29,4 +29,3 @@ for i in temp:
     desc+=i["text"]
     
 print(desc)
-
