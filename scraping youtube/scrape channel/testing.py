@@ -1,4 +1,4 @@
-import urllib.request, urllib.error, urllib.parse
+import urllib.request
 from bs4 import BeautifulSoup as bs
 import json
 import re
