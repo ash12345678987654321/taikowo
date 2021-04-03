@@ -11,7 +11,7 @@ def scrape(url):
     #https://medium.com/analytics-vidhya/using-python-and-selenium-to-scrape-infinite-scroll-web-pages-825d12c24ec7
     time.sleep(1)  # Allow 3 seconds for the web page to open
     scroll_pause_time = 0.3 # idk
-    scrape_limit=500 #we dont need so many
+    scrape_limit=200 #we dont need so many
     
     #long command but its just to access videos
     cmd="return ytInitialData.contents.twoColumnBrowseResultsRenderer.tabs[1].tabRenderer.content.sectionListRenderer.contents[0].itemSectionRenderer.contents[0].gridRenderer.items"
