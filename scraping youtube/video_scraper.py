@@ -3,12 +3,15 @@ from bs4 import BeautifulSoup as bs
 import json
 import re
 import random
+import time
 
 import numpy as np
 import pandas as pd
 
-def scrape(url):
+def scrape(url,id):
     print(url)
+    #time.sleep(1) #so that google doesnt block us
+    
     response = urllib.request.urlopen(url)
     webContent = response.read()
 
@@ -54,23 +57,28 @@ def scrape(url):
     else:
         res["desc"]=np.nan
     
+    #url="https://i.ytimg.com/vi/"+id+"/hqdefault.jpg"
+    #urllib.request.urlretrieve(url,"thumbs/"+id+".jpg")
+    
     return pd.Series(res)
 
 videos=[]
 
 inp=open("ids.txt","r").read().split("\n")
-inp=inp[:-1] #kill last video
+inp=inp[:-1]
 
 random.shuffle(inp)
 
-curr=1
-for id in inp[:2000]: #first 2000 bcas lazy
-    print("current:",str(curr))
+curr=0
+for id in inp:
     curr+=1
-
+    print("processing: ",curr)
+    
     temp=id.split("\t")
-    dat=scrape("http://www.youtube.com/watch?v="+temp[0])
-    dat["id"]=temp[0]
+    
+    id=temp[0]
+    dat=scrape("https://www.youtube.com/watch?v="+id,id)
+    dat["id"]=id
     dat["clickbait"]=temp[1]
     
     videos.append(dat)
