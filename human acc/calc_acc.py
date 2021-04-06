@@ -3,7 +3,7 @@ import pandas as pd
 df=pd.read_csv('metadata.csv',index_col=0)
 df=df.T
 
-res=open("results_ashley.txt","r").read().split("\n")
+res=open("results.txt","r").read().split("\n")
 
 curr=0
 

@@ -19,5 +19,5 @@ for id in df["id"]:
     url="https://i.ytimg.com/vi/"+id+"/hqdefault.jpg"
     urllib.request.urlretrieve(url,"thumbs/"+id+".jpg")
     
-    time.sleep(5)
+    time.sleep(0.2)
 
