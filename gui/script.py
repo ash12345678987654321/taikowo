@@ -1,38 +1,13 @@
 import numpy as np
 import pandas as pd
-
-from skimage import io
-from skimage import color
-import skimage.measure
-import cv2
-from IPython.display import SVG
-
-import face_recognition
-
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
-import matplotlib.patches as patches
-
 import tensorflow as tf
-from keras import layers
-import keras
-from keras.utils import plot_model
-from keras import backend as K
-
-import random
-import math
-import os
+from tensorflow import keras
+from tensorflow.keras import layers
 
 import string
 import time
 import re
 import nltk
-# Import WordNetLemmatizer
-from nltk.stem import WordNetLemmatizer
-from nltk.tokenize import TweetTokenizer
-from nltk.corpus import stopwords
-from nltk.corpus import wordnet
-from tensorflow.keras.layers.experimental.preprocessing import TextVectorization
 
 # Import WordNetLemmatizer
 from nltk.stem import WordNetLemmatizer
@@ -170,6 +145,7 @@ def process(text):
 #print(editString("when the imposter is SUS!!"))
 #print(vectorize_text("lol"))
 
+
 def recall_m(y_true, y_pred):
     true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
     possible_positives = K.sum(K.round(K.clip(y_true, 0, 1)))
@@ -187,59 +163,20 @@ def f1_m(y_true, y_pred):
     recall = recall_m(y_true, y_pred)
     return 2*((precision*recall)/(precision+recall+K.epsilon()))
 
-
-
-
-
-model = keras.models.load_model('main_model')
-encode_eye = keras.models.load_model('eye_model')
-encode_mouth = keras.models.load_model('mouth_model')
-
-
-
-def get_face(img):
-    locs=face_recognition.face_locations(img)
-    random.shuffle(locs)
-    
-    if (len(locs)==0):
-    	return np.ones((96,96,3),dtype='uint8')*128
-    else:
-        t,r,b,l=locs[0]
-        return img[t:b,l:r]
+from_disk = pickle.load(open("model.pkl", "rb"))
+model = tf.keras.Model.from_config(from_disk['config'])
+model.set_weights(from_disk['weights'])
+model.compile(loss="binary_crossentropy", optimizer="adam", metrics=["acc", precision_m, recall_m, f1_m])
 
 def evaluate(url):
     dat=scrape(url)
     id = url[-11:]
     thumbnailurl = "https://i.ytimg.com/vi/"+id+"/hqdefault.jpg"
-    img = Image.open(urlopen(thumbnailurl))
-    _img=np.asarray(img)[44:314]
-    print(type(_img))
-    print(_img.shape)
-    
-    face=get_face(_img)[:,:,0]
-    face=cv2.resize(face,(96,96))
-    
-    eye=face[4:44,56:80].reshape(-1)
-    if (eye.std()!=0): eye=(eye-eye.mean())/(eye.std()*3)+0.5 #normalize with mean 0.5 and 1/3 std
-
-    mouth=face[60:96,24:72].reshape(-1)
-    if (mouth.std()!=0): mouth=(mouth-mouth.mean())/(mouth.std()*3)+0.5 #normalize with mean 0.5 and 1/3 std
-
-    data={
-    	"thumb":np.array([_img]),
-    	"title":process(dat["title"]),
-    	"eye":encode_eye(eye.reshape(1,-1)),
-    	"mouth":encode_mouth(mouth.reshape(1,-1))
-    }
-    
-    print(model(data))
-    #val=model(data)[0][0]
-    val=0.69
-    return val, title, ImageTk.PhotoImage(img);
+    title = dat["title"]
+    val=model.predict(process(title))[0][0]
+    return val, title, thumbnailurl;
     
 
-
-############ GUI CODE ############
 
 import tkinter as tk
 import time
@@ -278,10 +215,11 @@ def handle_click(event):
     result["text"] = "Loading..."
     title["text"] = ""
     if (True):
-        val, TITLE, IMAGE = evaluate(url)
+        val, TITLE, IMAGEURL = evaluate(url)
         title["text"] = TITLE
-        imagepane.configure(image=IMAGE)
-        imagepane.image = IMAGE
+        img = ImageTk.PhotoImage(Image.open(urlopen(IMAGEURL)))
+        imagepane.configure(image=img)
+        imagepane.image = img
         if (val > 0.5):
             result["text"] = "CLICKBAIT: score = {:.3f}".format(val)
         else:
