@@ -64,7 +64,7 @@ def scrape(url,id):
 
 videos=[]
 
-inp=open("ids.txt","r").read().split("\n")
+inp=open("ids2.txt","r").read().split("\n")
 inp=inp[:-1]
 
 random.shuffle(inp)
@@ -77,12 +77,12 @@ for id in inp:
     temp=id.split("\t")
     
     id=temp[0]
-    dat=scrape("https://www.youtube.com/watch?v="+id,id)
-    dat["id"]=id
+    dat=scrape(id,id[-11:])
+    dat["id"]=id[-11:]
     dat["clickbait"]=temp[1]
     
     videos.append(dat)
 
 df=pd.concat(videos,axis=1)
-df.to_csv("metadata.csv")
+df.to_csv("metadata_b0.csv")
 
