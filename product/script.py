@@ -3,7 +3,6 @@ import pandas as pd
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
-import matplotlib.pyplot as plt
 
 import string
 import time
@@ -78,8 +77,7 @@ def scrape(url):
     else:
         res["desc"]=np.nan
     
-    #url="https://i.ytimg.com/vi/"+id+"/hqdefault.jpg"
-    #urllib.request.urlretrieve(url,"thumbs/"+id+".jpg")
+    
     
     return pd.Series(res)
     
@@ -170,17 +168,70 @@ model = tf.keras.Model.from_config(from_disk['config'])
 model.set_weights(from_disk['weights'])
 model.compile(loss="binary_crossentropy", optimizer="adam", metrics=["acc", precision_m, recall_m, f1_m])
 
-print("\n"*100)
-
-while (True):
-    print("enter youtube url: ",end="")
-    url=input()
+def evaluate(url):
     dat=scrape(url)
+    id = url[-11:]
+    thumbnailurl = "https://i.ytimg.com/vi/"+id+"/hqdefault.jpg"
+    title = dat["title"]
+    val=model.predict(process(title))[0][0]
+    return val, title, thumbnailurl;
     
-    val=model.predict(process(dat["title"]))[0][0]
+
+
+import tkinter as tk
+import time
+import io
+import base64
+from urllib.request import urlopen
+from PIL import Image, ImageTk
+import tkinter.font as font
+
+
+window = tk.Tk()
+window.geometry("500x500")
+window.title("Clickbait Identifier")
+entry = tk.Entry(width=50)
+entry.pack()
+button = tk.Button(
+    text="Is it clickbait?",
+    width=500,
+    height=1,
+)
+button.pack()
+title = tk.Label(text="",wraplength=500)
+
+title['font'] = font.Font(size=12)
+title.pack()
+imagepane = tk.Label(window,text="")
+imagepane.pack()
+result = tk.Label(window,image="")
+result['font'] =  font.Font(size=20)
+result.pack()
+
+
+
+def handle_click(event):
+    url = entry.get()
+    result["text"] = "Loading..."
+    title["text"] = ""
+    if (True):
+        val, TITLE, IMAGEURL = evaluate(url)
+        title["text"] = TITLE
+        img = ImageTk.PhotoImage(Image.open(urlopen(IMAGEURL)))
+        imagepane.configure(image=img)
+        imagepane.image = img
+        if (val > 0.5):
+            result["text"] = "CLICKBAIT: score = {:.3f}".format(val)
+        else:
+            result["text"] = "NOT CLICKBAIT: score = {:.3f}".format(val)
+    else:
+        result["text"] = "Error occurred"
+        title["text"] = ""
     
-    if (val>0.5): print("CLICKBAIT")
-    else: print("NOT CLICKBAIT")
-    print(val)
-    print()
+
     
+button.bind("<Button-1>", handle_click)
+window.mainloop()
+
+
+
