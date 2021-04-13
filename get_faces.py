@@ -6,7 +6,11 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import matplotlib.patches as patches
 
+<<<<<<< Updated upstream
 df=pd.read_csv('human acc/metadata.csv',index_col=0)
+=======
+df=pd.read_csv('scraping youtube/metadata_b0.csv',index_col=0)
+>>>>>>> Stashed changes
 df=df.T
 
 def get_img(id):
