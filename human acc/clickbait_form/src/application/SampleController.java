@@ -57,7 +57,7 @@ public class SampleController {
 		
 		Video curr=videos.get(index);
 		
-		img.setImage(new Image("file:../thumbs/"+curr.getId()+".jpg"));
+		img.setImage(new Image("file:../../thumbs/"+curr.getId()+".jpg"));
 		desc.setText(curr.getDesc());
 		title.setText(curr.getTitle());
 		views.setText(curr.getViews());

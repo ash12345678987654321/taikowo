@@ -6,11 +6,11 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import matplotlib.patches as patches
 
-df=pd.read_csv('scraping youtube/metadata.csv',index_col=0)
+df=pd.read_csv('human acc/metadata.csv',index_col=0)
 df=df.T
 
 def get_img(id):
-    return mpimg.imread('scraping youtube/thumbs/'+id+'.jpg')
+    return mpimg.imread('thumbs/'+id+'.jpg')
 
 curr=0
 for id in df["id"]:
