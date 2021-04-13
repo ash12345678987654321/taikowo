@@ -1,0 +1,50 @@
+ABCNews	UCBi2mrWuNuyYy4gbM6fU18Q	nonclickbait
+collegehumor	UCPDXXXJj9nax0fr0Wfc048g	nonclickbait
+comedyshortsgamer	UCrqsNpKuDQZreGaxBL_a5Jg	clickbait
+crashcourse	UCX6b17PVsYBQ0ip5gyeme-Q	nonclickbait
+Denis	UCOaMOXfe8EWH1GJyhqhXrAA	clickbait
+durv	UCsNU-z2Nxsm5xfSusglV9Zw	clickbait
+exility	UCpWWYl6JZqZ5lR1t5NNOrZg	clickbait
+factsverse	UCXZpQgX1897wYDLtvzmgyIA	clickbait
+fazeadapt	UCi87kxosIT3wrnEA-mv4jWA	clickbait
+fazeblaziken	UCmFQwGOLKSoRUDd2sOt8cbQ	clickbait
+fazerain	UCxaVOVnhmT0-HCUv72jtOTA	clickbait
+fazerug	UCilwZiBBfI9X6yiZRzWty8Q	clickbait
+fazeteeqo	UC1N5SBi_xt_zWZZMnl7fC1Q	clickbait
+Gawr Gura	UCoSrY_IQQVpmIRZ9Xf-y93g	nonclickbait
+Ghest Show	UCh5v41NTp7gwTfWfpLOwCHA	nonclickbait
+google	UCK8sQmJBp8GCxrOtXWBpyEA	nonclickbait
+HowToBasic	UCR4s1DE9J4DHzZYXMltSMAg	clickbait
+IGN	UCKy1dAqELo0zrOtPkf0eTMw	nonclickbait
+JennaMarbles	UC9gFih9rw0zNCK3ZtoKQQyA	nonclickbait
+kwebbelkop	UCfLuMSIDmeWRYpuCQL0OJ6A	clickbait
+Lance Steward	UC6-NBhOCP8DJqnpZE4TNE-A	clickbait
+lispyjimmy	UCgrA08uO7JR9h6Xr-ONjPkA	clickbait
+Maroon 5	UCBVjMGOIkavEAhyqpxJ73Dw	nonclickbait
+mashable	UCL8Nxsa1LB9DrMTHtt3IKiw	nonclickbait
+MKBHD	UCBJycsmduvYEL83R_U4JriQ	nonclickbait
+morgz	UCBwSufNse8VMBvQM_rCSvgQ	clickbait
+Mori Calliope	UCL_qhgtOy0dy1Agp8vkySQg	nonclickbait
+movlogs	UC_hoQDD6zKcIqpIYLsFbBeA	clickbait
+Muse Asia	UCGbshtvS9t-8CW11W7TooQg	nonclickbait
+newboston	UCJbPGzawDH1njbqV-D5HqKw	nonclickbait
+nigahiga	UCSAUGyc_xA8uYzaIVG6MESQ	nonclickbait
+reactiontime	UChM5Ff2yVeIZ16EWiB081cg	clickbait
+romanatwood	UCnOVVuoLJ_1YY8A0V802wHA	clickbait
+romanatwoodvlogs	UC-SV8-bUJfXjrRMnp7F8Wzw	clickbait
+Ryan's World	UChGJGhZ9SOOHvBB0Y4DOO_w	clickbait
+slowmoguys	UCUK0HBIBWgM2c4vsPhkYY4w	nonclickbait
+sssniperwolf	UCpB959t8iPrxQWj7G6n0ctQ	clickbait
+TEDEducation	UCsooa4yRKGN_zEE8iknghZA	nonclickbait
+The Metal Archives	UCrZpxK6xzLBed5BbCW60aDw	nonclickbait
+The Tonight Show Starring Jimmy Fallon	UC8-Th83bH_thdKZDJCrn88g	nonclickbait
+TheEllenShow	UCp0hYYBW6IMayGgR-WeoCvQ	nonclickbait
+theprogamerjay	UCgStIqFrRlX59Lzhf217sqg	clickbait
+therichest	UCdxi8d8qRsRyUi2ERYjYb-w	clickbait
+theverge	UCddiUEpeqJcYeBxX1IVBKvQ	nonclickbait
+THNKR	UCYNlsJPY-IrNhZqCOeApbEw	nonclickbait
+Veritasium	UCHnyfMqiRRG1u-2MsSQLbXA	nonclickbait
+vlogbrothers	UCGaVdbSav8xWuFWTadK6loA	nonclickbait
+voxdotcom	UCLXo7UDZvByw2ixzpQCufnA	nonclickbait
+Vsauce	UC6nSFpj9HTCZ5t-N3Rm3-HA	nonclickbait
+World Table Tennis	UC9ckyA_A3MfXUa0ttxMoIZw	nonclickbait
